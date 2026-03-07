@@ -119,12 +119,16 @@ function calcularDp() {
     }
 
     const valorHora = semestralidade / cargaTotal;
+    console.log("Hora aula: R$", valorHora);
 
     const valorDP = valorHora * disciplinaCH;
+    console.log("Valor da dependência: R$", valorDP);
 
     const parcelaDP = valorDP / parcelamento;
+    console.log("Valor da parcela da dependência: R$", parcelaDP);
 
     const novaMensalidade = mensalidadeAluno + parcelaDP;
+    console.log("Valor da nova Mensalidade: R$", novaMensalidade);
 
     document.getElementById("resPeriodo").innerText =
         "Período: " + periodo.nome;
