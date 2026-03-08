@@ -63,23 +63,29 @@ const periodos = {
 function carregarDisciplinas() {
 
     const periodoSelecionado = document.getElementById("periodo").value;
+
+    // Container onde as disciplinas são exibidas
     const container = document.getElementById("listaDisciplinas");
 
+    // Limpa as disciplinas exibidas anteriormente
     container.innerHTML = "";
 
+    // Sem período selecionado não execute a função
     if (!periodoSelecionado) return;
 
+    // Pegando as disciplinas do período selecionado
     const disciplinas = periodos[periodoSelecionado].disciplinas;
 
+    // Criando checkbox dinamicamente
     disciplinas.forEach(disciplina => {
 
         const label = document.createElement("label");
 
         label.innerHTML = `
-        <input type="checkbox" value="${disciplina.carga}">
+        <input type="checkbox" value="${disciplina.carga}" data-nome="${disciplina.nome}">
         ${disciplina.nome} - (${disciplina.carga}h)
     `;
-
+        // Adciona o label(child) dentro da div container(pai)
         container.appendChild(label);
         container.appendChild(document.createElement("br"));
 
@@ -96,12 +102,15 @@ function calcularDp() {
 
     if (!validarCampos()) return;
 
-    const checkboxes = document.querySelectorAll("#listaDisciplinas input:checked");
+    const disciplinasMarcadas = document.querySelectorAll("#listaDisciplinas input:checked");
 
     let disciplinaCH = 0;
+    let nomeDisciplinas = [];
 
-    checkboxes.forEach(cb => {
-        disciplinaCH += Number(cb.value);
+    disciplinasMarcadas.forEach(disciplina => {        
+        disciplinaCH += Number(disciplina.value);
+
+        nomeDisciplinas.push(disciplina.dataset.nome);
     });
 
     if (disciplinaCH === 0) {
@@ -111,14 +120,14 @@ function calcularDp() {
 
     const periodo = periodos[periodoSelecionado];
 
-    // soma da carga horária total do período
-    let cargaTotal = 0;
+    // Carga horária do período selecionado
+    let chTotal = 0;
 
     for (const d in periodo.disciplinas) {
-        cargaTotal += periodo.disciplinas[d].carga;
+        chTotal += periodo.disciplinas[d].carga;
     }
 
-    const valorHora = semestralidade / cargaTotal;
+    const valorHora = semestralidade / chTotal;
     console.log("Hora aula: R$", valorHora);
 
     const valorDP = valorHora * disciplinaCH;
@@ -132,6 +141,9 @@ function calcularDp() {
 
     document.getElementById("resPeriodo").innerText =
         "Período: " + periodo.nome;
+
+    document.getElementById("resDisciplinas").innerHTML =
+        "Disciplinas: " + nomeDisciplinas.join(", ");   
 
     document.getElementById("resHoraAula").innerText =
         "Valor da hora aula: " + moeda(valorHora);
@@ -153,6 +165,7 @@ function calcularSemDesconto(percentualDesc, valorFinal) {
 
     const diferencaDesc = (100 - percentualDesc) / 100;
     console.log("Diferença desconto: ", diferencaDesc);
+    console.log("=====================================================\n");
 
     const parcelaSemDesconto = moeda(valorFinal / diferencaDesc);
 
@@ -178,7 +191,6 @@ function validarCampos() {
 
         if (!valor) {
             alert(campo.mensagem);
-            document.getElementById(campo.id).focus();
             return false;
         }
 
