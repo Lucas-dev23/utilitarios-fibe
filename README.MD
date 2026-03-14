@@ -1,20 +1,20 @@
-# Calculadora de Dependência Acadêmica
+# Utilitários acadêmicos
 
-Uma calculadora simples para auxiliar no cálculo do valor de disciplinas em dependência (DP) com base na carga horária e na semestralidade do curso.
+Calculadoras simples para aproveitamento de disciplina e dependência.
 
-O projeto foi desenvolvido utilizando **HTML, CSS, JavaScript** e **Bootstrap**, com o objetivo de automatizar cálculos financeiros da disciplina em dependência.
+O projeto foi desenvolvido utilizando **HTML, CSS, JavaScript** e **Bootstrap**, com o objetivo de automatizar cálculos financeiros.
 
 ---
 
 ## Funcionalidades
 
 * Seleção do **período do curso**
-* Seleção de **disciplinas em dependência**
+* Seleção de **disciplinas em dependência** ou **disciplinas eliminadas**
 * Cálculo automático de:
 
   * Valor da **hora-aula**
-  * **Valor da dependência**
-  * **Parcela da dependência**
+  * **Valor da dependência** ou **Valor da eliminação de disciplina**
+  * **Parcela da dependência** ou **Parcela da eliminação**
   * **Nova mensalidade do aluno**
   * **Mensalidade sem desconto**
 * Validação de campos obrigatórios
@@ -25,7 +25,7 @@ O projeto foi desenvolvido utilizando **HTML, CSS, JavaScript** e **Bootstrap**,
 ## Como usar
 
 1. Selecione o **período**.
-2. Escolha as **disciplinas em dependência**.
+2. Escolha as **disciplinas em dependência** ou **disciplinas eliminadas**.
 3. Informe:
 
    * Semestralidade
