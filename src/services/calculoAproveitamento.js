@@ -47,7 +47,7 @@ function calcularAproveitamento() {
     console.log("Valor disciplina: ", valorDisciplina);
 
     const parcelaAP = valorDisciplina / parcelamento;
-    console.log("Parcela com eliminções de disciplina: ", parcelaAP);
+    console.log("Parcela com eliminações de disciplina: ", parcelaAP);
 
     const mensalidadeSemDesconto =
         calcularSemDesconto(desconto, mensalidadeAluno);
