@@ -12,21 +12,59 @@
 </head>
 
 <body>
-    <header class="text-white shadow-lg py-3" style="background: linear-gradient(90deg,#16a34a,#2563eb);">
 
-        <div class="container d-flex justify-content-between align-items-center">
+    <nav class="navbar navbar-expand-lg sticky-top shadow-lg py-3"
+        style="background: linear-gradient(90deg,#16a34a,#2563eb);">
 
-            <h4 class="fw-bold">
+        <div class="container">
+
+            <a class="navbar-brand text-white fw-bold" href="../index.html">
                 Faculdade Instituto Bíblico Ebenézer
-            </h4>
-
-            <a href="../../index.html" class="btn btn-light btn-sm">
-                Início
             </a>
+
+            <!-- Botão mobile -->
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+
+                <ul class="navbar-nav ms-auto gap-2">
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold px-3 rounded nav-hover" href="../index.html">
+                            <i class="bi bi-house-door me-1"></i>
+                            Início
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold px-3 rounded nav-hover"
+                            href="src/pages/dependencia.html">
+                            <i class="bi bi-calculator me-1"></i>
+                            Calcular Dependência
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-semibold px-3 rounded nav-hover"
+                            href="src/pages/eliminacao.html">
+                            <i class="bi bi-graph-up me-1"></i>
+                            Calcular Aproveitamento
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
 
         </div>
 
-    </header>
+    </nav>
 
     <div class="container py-5">
 
