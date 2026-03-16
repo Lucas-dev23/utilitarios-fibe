@@ -10,6 +10,11 @@ export function validarCampos() {
 
     for (const campo of campos) {
 
+        const elemento = document.getElementById(campo.id);
+
+        // se o campo não existir na página, ignora
+        if (!elemento) continue;
+
         const valor = document.getElementById(campo.id).value;
 
         if (!valor) {

@@ -25,7 +25,7 @@ function calcularAproveitamento() {
     const periodoId = valorNumero("periodo");
     const semestralidade = valorNumero("semestralidade");
     const parcelamento = valorNumero("parcelamento");
-    const mensalidadeAluno = valorNumero("mensalidadeAluno");
+    // const mensalidadeAluno = valorNumero("mensalidadeAluno");
     const desconto = valorNumero("percentualDescAluno");
 
     const { cargaTotal, nomes } = obterDisciplinasSelecionadas();
@@ -49,16 +49,15 @@ function calcularAproveitamento() {
     const parcelaAP = valorDisciplina / parcelamento;
     console.log("Parcela com eliminações de disciplina: ", parcelaAP);
 
-    const mensalidadeSemDesconto =
-        calcularSemDesconto(desconto, mensalidadeAluno);
+    const mensalidadeSemDesconto = semestralidade / parcelamento;
+       // calcularSemDesconto(desconto, mensalidadeAluno);
     console.log("Mensalidade sem desconto: ", mensalidadeSemDesconto);
 
-    const novaMensalidadeSemDesconto =
-        mensalidadeSemDesconto - parcelaAP;
+    const novaMensalidadeSemDesconto = mensalidadeSemDesconto - parcelaAP;
     console.log("Nova mensalidade com eliminação e sem desconto: ", novaMensalidadeSemDesconto);
 
-    const novaMensalidade =
-        novaMensalidadeSemDesconto * (1 - desconto / 100);
+    // Aplicando desconto
+    const novaMensalidade = novaMensalidadeSemDesconto * (1 - desconto / 100);
     console.log("Nova mensalidade com desconto aplicado: ", novaMensalidade);
 
     document.getElementById("resPeriodo").innerText = 
