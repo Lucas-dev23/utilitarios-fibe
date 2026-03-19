@@ -30,7 +30,7 @@ O projeto foi desenvolvido utilizando **HTML, CSS, JavaScript** e **Bootstrap**,
 
    * Semestralidade
    * Parcelamento
-   * Mensalidade atual do aluno
+   * Mensalidade atual do aluno (Caso seja dependência)
    * Percentual de desconto
 4. Clique em **Calcular**.
 
