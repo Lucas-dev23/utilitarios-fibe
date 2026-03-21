@@ -31,29 +31,48 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
 
-                <ul class="navbar-nav ms-auto gap-2">
+                <ul class="navbar-nav ms-auto align-items-center gap-2">
 
+                    <!-- Início -->
                     <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold px-3 rounded nav-hover" href="../../index.html">
+                        <a class="nav-link text-white fw-semibold px-3" href="../../index.html">
                             <i class="bi bi-house-door me-1"></i>
                             Início
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold px-3 rounded nav-hover"
-                            href="../pages/dependencia.html">
-                            <i class="bi bi-calculator me-1"></i>
-                            Calcular Dependência
+                    <!-- Dropdown Utilitários -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-semibold px-3" href="#" role="button"
+                            data-bs-toggle="dropdown">
+                            <i class="bi bi-tools me-1"></i>
+                            Utilitários
                         </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold px-3 rounded nav-hover"
-                            href="../pages/eliminacao.html">
-                            <i class="bi bi-graph-up me-1"></i>
-                            Calcular Aproveitamento
-                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li>
+                                <a class="dropdown-item" href="../pages/dependencia.html">
+                                    <i class="bi bi-calculator me-2"></i>
+                                    Dependência
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="../pages/eliminacao.html">
+                                    <i class="bi bi-graph-up me-2"></i>
+                                    Aproveitamento
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="../pages/renegociacao.html">
+                                    <i class="bi bi-cash-coin me-2"></i>
+                                    Renegociação
+                                </a>
+                            </li>
+
+                        </ul>
                     </li>
 
                 </ul>
@@ -100,7 +119,11 @@
 
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Semestralidade</label>
-                        <input type="number" id="semestralidade" class="form-control" value="3054.00" required>
+                        <div class="input-group">
+                            <span class="input-group-text">R$</span>
+                            <input type="number" id="semestralidade" class="form-control" value="3054.00" required>
+                        </div>
+
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -112,13 +135,6 @@
 
                 <div class="row">
 
-                    <!--
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Mensalidade do aluno</label>
-                        <input type="number" id="mensalidadeAluno" class="form-control" placeholder="Ex: 254.60"
-                            required>
-                    </div>
-                    -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Desconto (%)</label>
                         <input type="number" id="percentualDescAluno" class="form-control" placeholder="Ex: 60"

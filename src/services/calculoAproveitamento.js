@@ -4,7 +4,6 @@ import { valorNumero } from "../utils/domUtils.js";
 import { moeda } from "../utils/moeda.js";
 import { obterDisciplinasSelecionadas } from "../utils/disciplinasSelecionadas.js";
 import { buscarPeriodo } from "../data/periodos.js";
-import { calcularSemDesconto } from "../utils/calculos.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -50,7 +49,6 @@ function calcularAproveitamento() {
     console.log("Parcela com eliminações de disciplina: ", parcelaAP);
 
     const mensalidadeSemDesconto = semestralidade / parcelamento;
-       // calcularSemDesconto(desconto, mensalidadeAluno);
     console.log("Mensalidade sem desconto: ", mensalidadeSemDesconto);
 
     const novaMensalidadeSemDesconto = mensalidadeSemDesconto - parcelaAP;
