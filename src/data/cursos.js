@@ -1,7 +1,7 @@
 export const cursos = [
     {
         id: 1,
-        nome: "Graduação"
+        nome: "Bacharel em Teologia"
     },
     {
         id: 2,

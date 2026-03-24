@@ -1,7 +1,7 @@
 import { cursos } from "../data/cursos.js";
 import { validarCampos } from "../utils/validarCampos.js";
-import { valorNumero } from "../utils/domUtils.js";
 import { moeda } from "../utils/moeda.js";
+import { mostrarNotificacao } from "../utils/notificacao.js";
 
 let mensagemGerada = "";
 
@@ -10,12 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
     carregarCursos();
     carregarParcelas();
 
-    const botaoRenegociacao = document.getElementById("btnCalcularRenegociacao");
+    const form = document.getElementById("formRenegociacao");
     const campoParcelas = document.getElementById("campoParcelas");
     const botaoCopiarMensagem = document.getElementById("copiarMensagem");
 
-    botaoRenegociacao.addEventListener("click", () => {
-        calcularRenegociacao();
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        calcularRenegociacao(form);
     });
 
     campoParcelas.addEventListener("click", () => {
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     botaoCopiarMensagem.addEventListener("click", () => {
-        copiarMensagem();
+        copiarMensagem(form);
     })
 });
 
@@ -68,30 +69,19 @@ function toggleDropdown() {
     document.getElementById("dropdownParcelas").classList.toggle("d-none");
 }
 
-function obterParcelasSelecionadas() {
-    const checkboxes = document.querySelectorAll(".parcela-checkbox:checked");
+function calcularRenegociacao(form) {
 
-    const valores = [];
+    const formData = new FormData(form);
 
-    checkboxes.forEach(cb => {
-        valores.push(Number(cb.value));
-    });
-
-    return valores;
-}
-
-function calcularRenegociacao() {
+    const cursoNome = formData.get("curso");
+    const divida = Number(formData.get("divida"));
+    const desconto = Number(formData.get("percentualDescAluno"));
+    const parcelas = formData.getAll("parcelas[]").map(Number);
 
     if (!validarCampos()) return;
 
-    const selectCurso = document.getElementById("curso");
-    const cursoNome = selectCurso.options[selectCurso.selectedIndex].text;
-    const divida = valorNumero("divida");
-    const desconto = valorNumero("percentualDescAluno");
-    const parcelas = obterParcelasSelecionadas();
-
     if (parcelas.length === 0) {
-        alert("Selecione pelo menos uma parcela");
+        mostrarNotificacao("Selecione pelo menos uma parcela", "danger");
         return;
     }
 
@@ -100,6 +90,7 @@ function calcularRenegociacao() {
     mensagemGerada = gerarMensagem({
         cursoNome,
         divida,
+        dividaComDesconto,
         desconto,
         parcelas
     });
@@ -109,30 +100,54 @@ function calcularRenegociacao() {
 
     lista.innerHTML = "";
 
-    // gera resultado para cada parcela
+    // ==============================
+    // Dívida com desconto
+    // ==============================
+    const itemTotal = document.createElement("li");
+    itemTotal.className = "list-group-item d-flex justify-content-between align-items-center";
+
+    const esquerdaTotal = document.createElement("div");
+    esquerdaTotal.innerHTML = `
+    <strong>Dívida com desconto:</strong> 
+    ${moeda(dividaComDesconto)}
+`;
+
+    itemTotal.appendChild(esquerdaTotal);
+    lista.appendChild(itemTotal);
+
+    // ==============================
+    // 🔹 Parcelas
+    // ==============================
     parcelas.forEach(p => {
 
         const valorParcela = dividaComDesconto / p;
 
-        lista.innerHTML += `
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-    
-            <div>
-                <div class="">${p}x de ${moeda(valorParcela)}</div>
-            </div>
+        const li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
 
-            <div class="text-end small text-muted">
-                Tabela de preço<br>
-                ${moeda(valorParcela * 2)}
-            </div>
+        // lado esquerdo
+        const esquerda = document.createElement("div");
+        esquerda.innerHTML = `
+        ${p}x de ${moeda(valorParcela)}
+    `;
 
-        </li>
-        `;
+        // lado direito
+        const direita = document.createElement("div");
+        direita.className = "text-end small text-muted";
+        direita.innerHTML = `
+        Tabela de preço<br>
+        ${moeda(valorParcela * 2)}
+    `;
+
+        li.appendChild(esquerda);
+        li.appendChild(direita);
+
+        lista.appendChild(li);
     });
 
     // mostra resultado
     resultadoDiv.style.display = "block";
-    
+
     // Fecha o dropdown parcelas
     document.getElementById("dropdownParcelas").classList.add("d-none");
 
@@ -141,11 +156,9 @@ function calcularRenegociacao() {
     })
 }
 
-function gerarMensagem({ cursoNome, divida, desconto, parcelas }) {
+function gerarMensagem({ cursoNome, divida, dividaComDesconto, desconto, parcelas }) {
 
-    const dividaComDesconto = divida * (1 - desconto / 100);
-
-let mensagem = `Verificamos que há um valor em aberto referente ao seu curso de ${cursoNome}.
+    let mensagem = `Verificamos que há um valor em aberto referente ao seu curso de ${cursoNome}.
 Pensando em ajudá-lo(a) a regularizar sua situação acadêmica, conseguimos uma condição especial de negociação para você.
 
 💰 Valor original: ${moeda(divida)}
@@ -160,14 +173,14 @@ Você pode escolher a forma que ficar melhor:
     parcelas.forEach((p, index) => {
         const valorParcela = dividaComDesconto / p;
 
-        mensagem += `✔ ${p}x de ${moeda(Number(valorParcela.toFixed(2)))}`;
+        mensagem += `✔ ${p}x de ${moeda(valorParcela)}`;
 
         if (index < parcelas.length - 1) {
             mensagem += `\nou\n`;
         }
     });
 
-mensagem += `
+    mensagem += `
 
 Assim conseguimos regularizar seu vínculo acadêmico. 
 
@@ -176,7 +189,27 @@ Qual dessas opções fica melhor para você? 😊`;
     return mensagem;
 }
 
-function copiarMensagem() {
+function copiarMensagem(form) {
     navigator.clipboard.writeText(mensagemGerada);
-    alert("Mensagem copiada!");
+    mostrarNotificacao("Mensagem copiada!", "success");
+
+    resetarFormulario(form);
+}
+
+function resetarFormulario(form) {
+    form.reset();
+
+    // limpa checkboxes manualmente (não estão dentro de input padrão)
+    const checkboxes = document.querySelectorAll(".parcela-checkbox");
+    checkboxes.forEach(cb => cb.checked = false);
+
+    // esconde resultado
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.style.display = "none";
+
+    // limpa lista
+    const lista = resultadoDiv.querySelector(".list-group");
+    lista.innerHTML = "";
+
+    mensagemGerada = "";
 }

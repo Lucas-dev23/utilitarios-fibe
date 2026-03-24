@@ -1,3 +1,5 @@
+import { mostrarNotificacao } from "./notificacao.js";
+
 export function validarCampos() {
 
     const campos = [
@@ -20,7 +22,7 @@ export function validarCampos() {
         const valor = document.getElementById(campo.id).value;
 
         if (!valor) {
-            alert(campo.mensagem);
+            mostrarNotificacao(campo.mensagem, "danger");
             return false;
         }
 
