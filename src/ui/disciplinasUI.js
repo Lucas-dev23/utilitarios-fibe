@@ -20,7 +20,7 @@ export function carregarDisciplinas(periodoId) {
         const label = document.createElement("label");
 
         label.innerHTML = `
-        <input type="checkbox" value="${disciplina.carga}" data-nome="${disciplina.nome}">
+        <input type="checkbox" name="disciplinas" value="${disciplina.carga}" data-nome="${disciplina.nome}">
         ${disciplina.nome} - (${disciplina.carga}h)
         `;
 

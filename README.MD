@@ -1,52 +1,94 @@
-# Utilitários acadêmicos
+# 📊 Calculadoras Financeiras Acadêmicas
 
-Calculadoras simples para aproveitamento de disciplina e dependência.
+Aplicação web para cálculo de valores relacionados a:
 
-O projeto foi desenvolvido utilizando **HTML, CSS, JavaScript** e **Bootstrap**, com o objetivo de automatizar cálculos financeiros.
+- 📚 **Dependência de disciplinas**
+- 🎓 **Aproveitamento (eliminação) de disciplinas**
+- 💰 **Renegociação de inadimplência**
 
----
-
-## Funcionalidades
-
-* Seleção do **período do curso**
-* Seleção de **disciplinas em dependência** ou **disciplinas eliminadas**
-* Cálculo automático de:
-
-  * Valor da **hora-aula**
-  * **Valor da dependência** ou **Valor da eliminação de disciplina**
-  * **Parcela da dependência** ou **Parcela da eliminação**
-  * **Nova mensalidade do aluno**
-  * **Mensalidade sem desconto**
-* Validação de campos obrigatórios
-* Interface simples e responsiva
+O objetivo do projeto é **automatizar cálculos financeiros acadêmicos**, reduzindo erros manuais e melhorando a eficiência.
 
 ---
 
-## Como usar
+## 🚀 Tecnologias utilizadas
 
-1. Selecione o **período**.
-2. Escolha as **disciplinas em dependência** ou **disciplinas eliminadas**.
-3. Informe:
-
-   * Semestralidade
-   * Parcelamento
-   * Mensalidade atual do aluno (Caso seja dependência)
-   * Percentual de desconto
-4. Clique em **Calcular**.
-
-O sistema exibirá os valores calculados automaticamente.
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+- **Bootstrap**
 
 ---
 
-## Tecnologias utilizadas
+## ⚙️ Funcionalidades
 
-* HTML
-* CSS
-* JavaScript
-* Bootstrap
+### 📌 Cálculos automatizados
+
+- Valor da **hora-aula**
+- Valor total da **dependência** ou **eliminação de disciplinas**
+- Valor da **parcela**
+- Cálculo da **nova mensalidade**
+- Cálculo da **mensalidade sem desconto**
 
 ---
 
-## Autor
+### 🎯 Interações do usuário
 
-Lucas Lima
+- Seleção de **período acadêmico**
+- Seleção dinâmica de **disciplinas**
+- Validação de campos obrigatórios
+
+---
+
+### 🎨 Interface
+
+- Layout **simples e intuitivo**
+- Responsivo com **Bootstrap**
+
+---
+
+## 🧠 Regras de negócio aplicadas
+
+- Cálculo proporcional baseado na **carga horária das disciplinas**
+- Rateio da semestralidade para obtenção da **hora-aula**
+- Aplicação de **descontos percentuais**
+- Diferenciação entre:
+  - ➕ Acréscimo (dependência)
+  - ➖ Redução (aproveitamento)
+
+---
+
+## ▶️ Como usar
+
+1. Selecione o **período acadêmico**
+2. Escolha as **disciplinas** desejadas:
+   - Dependência **ou**
+   - Aproveitamento
+3. Informe os dados necessários:
+   - 💰 Semestralidade
+   - 📆 Quantidade de parcelas
+   - 💳 Mensalidade atual (para dependência)
+   - 📉 Percentual de desconto
+4. Clique em **Calcular**
+
+👉 Os resultados serão exibidos automaticamente na tela.
+
+---
+
+## 💡 Possíveis melhorias futuras
+
+- Máscara de moeda (R$)
+- Integração com backend (API)
+- Persistência de dados (localStorage ou banco)
+- Autenticação de usuários
+- Exportação de resultados (PDF/Excel)
+
+---
+
+## 📌 Objetivo do projeto
+
+Este projeto foi desenvolvido com foco em:
+
+- Prática de **lógica de programação**
+- Manipulação de **DOM**
+- Organização de código em **módulos JavaScript**
+- Simulação de regras de negócio reais

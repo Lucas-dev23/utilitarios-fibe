@@ -7,7 +7,6 @@ export function validarCampos() {
         { id: "semestralidade", mensagem: "Informe a semestralidade." },
         { id: "parcelamento", mensagem: "Informe o parcelamento." },
         { id: "mensalidadeAluno", mensagem: "Informe a mensalidade do aluno." },
-        { id: "percentualDescAluno", mensagem: "Informe o desconto do aluno." },
         { id: "curso", mensagem: "Selecione um curso." },
         { id: "divida", mensagem: "Informe a dívida do aluno." },
     ];

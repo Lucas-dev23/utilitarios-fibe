@@ -95,60 +95,65 @@
                 <h3 class="m-1">Calculadora de Aproveitamento</h3>
                 <hr class="mb-4">
 
-                <div class="mb-3">
+                <form id="formAproveitamento">
 
-                    <label class="form-label">Período</label>
+                    <div class="row">
 
-                    <select class="form-select" id="periodo" required>
-                        <option value="">Selecione o período</option>
-                        <option value="1">1º Período</option>
-                        <option value="2">2º Período</option>
-                        <option value="3">3º Período</option>
-                    </select>
+                        <div class="mb-3">
 
-                </div>
+                            <label class="form-label">Período</label>
 
-                <div class="mb-3">
+                            <select class="form-select" id="periodo" name="periodo" >
+                                <option value="">Selecione o período</option>
+                            </select>
 
-                    <label class="form-label">Disciplinas</label>
-
-                    <div id="listaDisciplinas" class="border rounded p-3 bg-light"
-                        style="max-height:180px; overflow-y:auto;">
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Semestralidade</label>
-                        <div class="input-group">
-                            <span class="input-group-text">R$</span>
-                            <input type="number" id="semestralidade" class="form-control" value="3054.00" required>
                         </div>
 
+                        <div class="mb-3">
+
+                            <label class="form-label">Disciplinas</label>
+
+                            <div id="listaDisciplinas" class="border rounded p-3 bg-light"
+                                style="max-height:180px; overflow-y:auto;">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Semestralidade</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R$</span>
+                                    <input type="number" step="0.01" id="semestralidade" name="semestralidade" class="form-control" value="3054.00"
+                                        >
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Parcelamento</label>
+                                <input type="number" id="parcelamento" name="parcelamento" class="form-control" value="6" >
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Desconto (%)</label>
+                                <input type="number" id="percentualDescAluno" name="percentualDescAluno" class="form-control" placeholder="Ex: 60">
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Calcular
+                        </button>
+
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Parcelamento</label>
-                        <input type="number" id="parcelamento" class="form-control" value="6" required>
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Desconto (%)</label>
-                        <input type="number" id="percentualDescAluno" class="form-control" placeholder="Ex: 60"
-                            required>
-                    </div>
-
-                </div>
-
-                <button class="btn btn-primary w-100" id="btnCalcularAproveitamento">
-                    Calcular
-                </button>
+                </form>
 
                 <div class="mt-4 alert alert-success" id="resultado" style="display: none;">
 
