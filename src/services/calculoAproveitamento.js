@@ -88,7 +88,7 @@ function calcularAproveitamento(form) {
         "Nova mensalidade: " + moeda(novaMensalidade);
 
     document.getElementById("resSemDesconto").innerText =
-        "Mensalidade sem desconto: " + moeda(novaMensalidadeSemDesconto);
+        "Mensalidade integral: " + moeda(novaMensalidadeSemDesconto);
 
     // Mostra o resultado
     document.getElementById("resultado").style.display = "block";

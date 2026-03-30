@@ -86,7 +86,7 @@ function calcularDependencia(form) {
         "Nova mensalidade: " + moeda(novaMensalidade);
 
     document.getElementById("resSemDesconto").innerText =
-        "Valor na tabela de preço: " + moeda(mensalidadeSemDesconto);
+        "Mensalidade integral " + moeda(mensalidadeSemDesconto);
 
     // Mostra o resultado
     document.getElementById("resultado").style.display = "block";

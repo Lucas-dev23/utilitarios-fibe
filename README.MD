@@ -13,7 +13,6 @@ O objetivo do projeto é **automatizar cálculos financeiros acadêmicos**, redu
 ## 🚀 Tecnologias utilizadas
 
 - **HTML5**
-- **CSS3**
 - **JavaScript**
 - **Bootstrap**
 
