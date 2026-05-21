@@ -3,6 +3,7 @@ import { mostrarNotificacao } from "./notificacao.js";
 export function validarCampos() {
 
     const campos = [
+        { id: "grade", mensagem: "Selecione uma grade." },
         { id: "periodo", mensagem: "Selecione um período." },
         { id: "semestralidade", mensagem: "Informe a semestralidade." },
         { id: "parcelamento", mensagem: "Informe o parcelamento." },

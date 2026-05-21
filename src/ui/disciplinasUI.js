@@ -1,6 +1,6 @@
-import { buscarPeriodo } from "../data/periodos.js";
+import { buscarGrade, buscarPeriodo } from "../data/periodos.js";
 
-export function carregarDisciplinas(periodoId) {
+export function carregarDisciplinas(gradeId, periodoId) {
 
     // Container onde as disciplinas são exibidas
     const container = document.getElementById("listaDisciplinas");
@@ -8,11 +8,13 @@ export function carregarDisciplinas(periodoId) {
     // Limpa as disciplinas exibidas anteriormente
     container.innerHTML = "";
 
-    // Sem período selecionado não execute a função
+    // Sem grade selecionada não execute a função
+    if (!gradeId) return;
+
     if (!periodoId) return;
 
     // Pegando o período selecionado
-    const periodo = buscarPeriodo(Number(periodoId));
+    const periodo = buscarPeriodo(Number(gradeId), Number(periodoId));
 
     // Criando os checkboxes das disciplinas
     periodo.disciplinas.forEach(disciplina => {

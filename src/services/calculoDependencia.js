@@ -1,3 +1,4 @@
+import { carregarGrade } from "../ui/gradeUI.js";
 import { carregarPeriodos } from "../ui/periodosUI.js";
 import { carregarDisciplinas } from "../ui/disciplinasUI.js";
 import { validarCampos } from "../utils/validarCampos.js";
@@ -9,13 +10,30 @@ import { mostrarNotificacao } from "../utils/notificacao.js";
 // "Escutando" eventos no html
 document.addEventListener("DOMContentLoaded", () => {
 
-    carregarPeriodos();
+    carregarGrade();
 
     const form = document.getElementById("formDependencia");
+
+    const selectGrade = document.getElementById("grade");
+
+    selectGrade.addEventListener("change", () => {
+
+        // Limpando as disciplinas anteriores
+        document.getElementById("listaDisciplinas").innerHTML = "";
+
+        // Limpando o cálculo anterior
+        document.getElementById("resultado").style.display = "none";
+
+        carregarPeriodos(selectGrade.value);
+    });
+
     const selectPeriodo = document.getElementById("periodo");
 
     selectPeriodo.addEventListener("change", () => {
-        carregarDisciplinas(selectPeriodo.value);
+        carregarDisciplinas(selectGrade.value, selectPeriodo.value);
+
+        // Limpando o cálculo anterior
+        document.getElementById("resultado").style.display = "none";
     });
 
     form.addEventListener("submit", (e) => {
@@ -28,6 +46,7 @@ function calcularDependencia(form) {
 
     const formData = new FormData(form);
 
+    const grade = Number(formData.get("grade"));
     const periodo = Number(formData.get("periodo"));
     const semestralidade = Number(formData.get("semestralidade"));
     const parcelamento = Number(formData.get("parcelamento"));
@@ -48,7 +67,7 @@ function calcularDependencia(form) {
         document.querySelectorAll("#listaDisciplinas input:checked")
     ).map(cb => cb.dataset.nome);
 
-    const chTotal = calcularCHTotalPeriodo(periodo);
+    const chTotal = calcularCHTotalPeriodo(grade, periodo);
 
     const valorHora = semestralidade / chTotal;
 
@@ -71,7 +90,7 @@ function calcularDependencia(form) {
     });
 
     document.getElementById("resPeriodo").innerText =
-        "Período: " + buscarPeriodo(periodo).nome;
+        "Período: " + buscarPeriodo(grade, periodo).nome;
 
     document.getElementById("resDisciplinas").innerText =
         "Disciplinas: " + nomesDisciplinas.join(", ");
