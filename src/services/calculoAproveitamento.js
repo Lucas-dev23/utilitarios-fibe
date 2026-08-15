@@ -101,7 +101,7 @@ function calcularAproveitamento(form) {
         "Hora aula: " + moeda(valorHora);
 
     document.getElementById("resParcelaAp").innerText =
-        "Parcela com eliminações: " + moeda(parcelaAP);
+        "Valor da(s) disciplina(s) eliminada(s): " + moeda(parcelaAP);
 
     document.getElementById("resNovaMensalidade").innerText =
         "Nova mensalidade: " + moeda(novaMensalidade);
