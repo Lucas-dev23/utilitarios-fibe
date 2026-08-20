@@ -77,7 +77,7 @@ function calcularDependencia(form) {
 
     const mensalidadeSemDesconto = semestralidade / parcelamento;
 
-    const novaMensalidadeSemDesonto = mensalidadeSemDesconto + parcelaDP;
+    const novaMensalidadeSemDesconto = mensalidadeSemDesconto + parcelaDP;
 
     // Aplicando desconto
     const novaMensalidade = novaMensalidadeSemDesconto * (1 - desconto / 100);
