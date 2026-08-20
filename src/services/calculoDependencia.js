@@ -75,9 +75,12 @@ function calcularDependencia(form) {
 
     const parcelaDP = valorDP / parcelamento;
 
-    const novaMensalidade = mensalidadeAluno + parcelaDP;
+    const mensalidadeSemDesconto = semestralidade / parcelamento;
 
-    const mensalidadeSemDesconto = calcularSemDesconto(desconto, novaMensalidade);
+    const novaMensalidadeSemDesonto = mensalidadeSemDesconto + parcelaDP;
+
+    // Aplicando desconto
+    const novaMensalidade = novaMensalidadeSemDesconto * (1 - desconto / 100);
 
     mostrarLogs({
         cargaTotal,
@@ -85,8 +88,8 @@ function calcularDependencia(form) {
         valorHora,
         valorDP,
         parcelaDP,
-        novaMensalidade,
-        mensalidadeSemDesconto
+        mensalidadeSemDesconto,
+        novaMensalidadeSemDesconto
     });
 
     document.getElementById("resPeriodo").innerText =
@@ -99,13 +102,13 @@ function calcularDependencia(form) {
         "Hora aula: " + moeda(valorHora);
 
     document.getElementById("resParcelaDp").innerText =
-        "Parcela Dependência: " + moeda(parcelaDP);
+        "Valor da(s) disciplina(s) em depenência: " + moeda(parcelaDP);
 
     document.getElementById("resNovaMensalidade").innerText =
-        "Nova mensalidade: " + moeda(novaMensalidade);
+        "Nova Mensalidade sem Desconto: " + moeda(novaMensalidadeSemDesonto);
 
     document.getElementById("resSemDesconto").innerText =
-        "Mensalidade integral " + moeda(mensalidadeSemDesconto);
+        "Mensalidade com desconto: " + moeda(novaMensalidade);
 
     // Mostra o resultado
     document.getElementById("resultado").style.display = "block";
@@ -128,8 +131,8 @@ function mostrarLogs({
     console.log("Hora aula:", valorHora);
     console.log("Valor disciplina:", valorDP);
     console.log("Parcela com dependência:", parcelaDP);
-    console.log("Nova mensalidade:", novaMensalidade);
-    console.log("Mensalidade sem desconto:", mensalidadeSemDesconto);
+    console.log("Mensalidade sem Desconto:", mensalidadeSemDesconto);
+    console.log("Nova Mensalidade com Dependência:", novaMensalidadeSemDesonto);
 
     console.groupEnd();
 }
