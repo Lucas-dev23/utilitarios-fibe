@@ -105,7 +105,7 @@ function calcularDependencia(form) {
         "Valor da(s) disciplina(s) em depenência: " + moeda(parcelaDP);
 
     document.getElementById("resNovaMensalidade").innerText =
-        "Nova Mensalidade sem Desconto: " + moeda(novaMensalidadeSemDesconto);
+        "Novo valor integral: " + moeda(novaMensalidadeSemDesconto);
 
     document.getElementById("resSemDesconto").innerText =
         "Mensalidade com desconto: " + moeda(novaMensalidade);
