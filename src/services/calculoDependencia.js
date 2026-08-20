@@ -120,8 +120,8 @@ function mostrarLogs({
     valorHora,
     valorDP,
     parcelaDP,
-    novaMensalidade,
-    mensalidadeSemDesconto
+    mensalidadeSemDesconto,
+    novaMensalidadeSemDesconto
 }) {
 
     console.group("📊 Cálculo de Dependência", new Date());
