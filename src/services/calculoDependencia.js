@@ -105,7 +105,7 @@ function calcularDependencia(form) {
         "Valor da(s) disciplina(s) em depenência: " + moeda(parcelaDP);
 
     document.getElementById("resNovaMensalidade").innerText =
-        "Nova Mensalidade sem Desconto: " + moeda(novaMensalidadeSemDesonto);
+        "Nova Mensalidade sem Desconto: " + moeda(novaMensalidadeSemDesconto);
 
     document.getElementById("resSemDesconto").innerText =
         "Mensalidade com desconto: " + moeda(novaMensalidade);
@@ -132,7 +132,7 @@ function mostrarLogs({
     console.log("Valor disciplina:", valorDP);
     console.log("Parcela com dependência:", parcelaDP);
     console.log("Mensalidade sem Desconto:", mensalidadeSemDesconto);
-    console.log("Nova Mensalidade com Dependência:", novaMensalidadeSemDesonto);
+    console.log("Nova Mensalidade com Dependência:", novaMensalidadeSemDesconto);
 
     console.groupEnd();
 }
