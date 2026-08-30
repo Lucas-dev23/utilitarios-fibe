@@ -50,7 +50,6 @@ function calcularDependencia(form) {
     const periodo = Number(formData.get("periodo"));
     const semestralidade = Number(formData.get("semestralidade"));
     const parcelamento = Number(formData.get("parcelamento"));
-    const mensalidadeAluno = Number(formData.get("mensalidadeAluno"));
     const desconto = Number(formData.get("percentualDescAluno"));
     const cargaHoraria = formData.getAll("disciplinas").map(Number);
 

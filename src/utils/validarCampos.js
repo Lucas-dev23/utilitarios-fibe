@@ -7,7 +7,6 @@ export function validarCampos() {
         { id: "periodo", mensagem: "Selecione um período." },
         { id: "semestralidade", mensagem: "Informe a semestralidade." },
         { id: "parcelamento", mensagem: "Informe o parcelamento." },
-        { id: "mensalidadeAluno", mensagem: "Informe a mensalidade do aluno." },
         { id: "curso", mensagem: "Selecione um curso." },
         { id: "divida", mensagem: "Informe a dívida do aluno." },
     ];
@@ -25,7 +24,6 @@ export function validarCampos() {
             mostrarNotificacao(campo.mensagem, "danger");
             return false;
         }
-
     }
 
     return true;
